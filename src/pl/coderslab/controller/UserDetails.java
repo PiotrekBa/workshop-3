@@ -3,6 +3,8 @@ package pl.coderslab.controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +34,7 @@ public class UserDetails extends HttpServlet {
 			request.setAttribute("user", user);
 			
 			Solution[] userSolutions = Solution.loadAllByUserId(id, conn);
+			Collections.reverse(Arrays.asList(userSolutions));
 			request.setAttribute("solutions", userSolutions);
 			getServletContext().getRequestDispatcher("/WEB-INF/views/user-details.jsp").forward(request, response);
 		} catch (SQLException e) {
@@ -44,7 +47,6 @@ public class UserDetails extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

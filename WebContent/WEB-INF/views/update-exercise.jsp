@@ -9,10 +9,18 @@
 </head>
 <body>
 	<%@include file="header.jspf" %>
-	<h1>Panel administratora</h1>
-	<a href="panel-exercises">Lista zadań</a><br>
-	<a href="panel-groups">Lista grupy użytkowników</a><br>
-	<a href="panel-users">Lista użytkowników</a>
+	
+	<h1>${head}</h1>
+	
+	<form action="panel-exercises" method="post">
+		Tytył
+		<input type="text" name="title" value="${exercise.title}"><br>
+		Opis
+		<input type="text" name="description" value="${exercise.description}"><br>
+		<input type="submit" value="Zapisz">
+		<input type="hidden" name="id" value="${exercise.id}">
+	</form>
+
 <%@include file="footer.jspf" %>
 </body>
 </html>

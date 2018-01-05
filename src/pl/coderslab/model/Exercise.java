@@ -43,7 +43,7 @@ public class Exercise {
 	static public Exercise[] loadAllExercises(Connection conn) throws SQLException {
 
 		ArrayList<Exercise> exercises = new ArrayList<Exercise>();
-		String sql = "SELECT * FROM excercises";
+		String sql = "SELECT * FROM exercises";
 		PreparedStatement preparedStatement;
 		preparedStatement = conn.prepareStatement(sql);
 		ResultSet resultSet = preparedStatement.executeQuery();

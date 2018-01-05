@@ -9,17 +9,16 @@
 </head>
 <body>
 	<%@include file="header.jspf" %>
-	<h1>Szczegóły użytkownika</h1>
-	<p>
-		Nazwa użytkownika: ${user.username}<br> 
-		Email: ${user.email}<br> 
-		Grupa: ${user.getUserGroup().name}
-	</p>
-	<a href="details?editId=0">Dodaj rozwiązanie</a>
+	<h1>Administrator - podgląd zadania</h1>
+	<h4>Nazwa zadnia:</h4>
+	${exercise.title}
+	<h4>Opis zadnia:</h4>
+	 ${exercise.description}
+	<br><br><br>
 	<table border="1">
 		<thead>
 			<tr>
-				<td>Tytuł</td>				
+				<td>Autor rozwiązania</td>					
 				<td>Data dodania</td>
 				<td>Akcja</td>
 			</tr>
@@ -27,20 +26,13 @@
 		<tbody>
 			<c:forEach items="${solutions}" var="solution">
 				<tr>
-					<td>${solution.getExercise().title}</td>
+					<td>${solution.getUser().username}</td>
 					<td>${solution.created}</td>
-					<td>
-						<a href="details?id=${solution.id}">Szczegóły</a>
-						<a href="details?editId=${solution.id}">Edycja</a>
-						<a href="details?delId=${solution.id}">Usuń</a>
-					</td>
+					<td><a href="details?id=${solution.id}">Szczegóły</a>
 				</tr>
 					
 			</c:forEach>
-		
 		</tbody>
-			
-	
 	</table>
 <%@include file="footer.jspf" %>
 </body>
